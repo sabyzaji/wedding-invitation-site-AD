@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Heart, Menu, X } from "lucide-react";
+import { Home, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "#welcome",   label: "Welcome" },
-  { href: "#schedule",  label: "Schedule" },
-  { href: "#our-story", label: "Our Story" },
-  { href: "#travel",    label: "Travel" },
+  { href: "#welcome", label: "Welcome" },
+  { href: "#invitation", label: "Invitation" },
+  { href: "#venue", label: "Venue" },
+  { href: "#schedule", label: "Details" },
+  { href: "#blessings", label: "Blessings" },
 ];
 
 function scrollTo(href) {
@@ -52,51 +53,85 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "bg-background/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-background/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <button onClick={() => handleNav("#welcome")} className="flex items-center gap-2 group">
-            <Heart className="w-4 h-4 text-primary fill-primary transition-transform group-hover:scale-110" />
-            <span className="font-display text-lg lg:text-xl tracking-wide text-foreground">A & D</span>
+            <Home
+              className={`w-4 h-4 transition-transform group-hover:scale-110 ${
+                scrolled ? "text-primary" : "text-white"
+              }`}
+            />
+            <span
+              className={`font-display text-lg lg:text-xl tracking-wide transition-colors ${
+                scrolled ? "text-foreground" : "text-white"
+              }`}
+            >
+              Chuzhakunnel
+            </span>
           </button>
 
-          {/* Desktop */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button key={link.href} onClick={() => handleNav(link.href)}
+              <button
+                key={link.href}
+                onClick={() => handleNav(link.href)}
                 className={`relative font-body text-xs tracking-widest uppercase transition-all duration-300 hover:text-primary ${
-                  active === link.href ? "text-primary" : "text-muted-foreground"
-                }`}>
+                  active === link.href
+                    ? scrolled
+                      ? "text-primary"
+                      : "text-white"
+                    : scrolled
+                      ? "text-muted-foreground"
+                      : "text-white/70"
+                }`}
+              >
                 {link.label}
                 {active === link.href && (
-                  <motion.div layoutId="nav-underline" className="absolute -bottom-1 left-0 right-0 h-px bg-primary" />
+                  <motion.div
+                    layoutId="nav-underline"
+                    className={`absolute -bottom-1 left-0 right-0 h-px ${
+                      scrolled ? "bg-primary" : "bg-white"
+                    }`}
+                  />
                 )}
               </button>
             ))}
           </div>
 
-          {/* Mobile toggle */}
-          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-foreground">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={`lg:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
+          >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border"
+          >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, i) => (
-                <motion.button key={link.href} onClick={() => handleNav(link.href)}
-                  initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
+                <motion.button
+                  key={link.href}
+                  onClick={() => handleNav(link.href)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
                   className={`font-body text-sm tracking-widest uppercase text-left py-2 transition-colors ${
                     active === link.href ? "text-primary" : "text-muted-foreground"
-                  }`}>
+                  }`}
+                >
                   {link.label}
                 </motion.button>
               ))}
