@@ -4,6 +4,7 @@ import imgFamily from "@/assests/family.jpeg";
 import imgHouse from "@/assests/house.jpg";
 import imgVenue from "@/assests/house.jpeg";
 import imgFoundation from "@/assests/foundation.jpeg";
+import imgFoundation2 from "@/assests/foundation2.jpeg";
 import {
   Home,
   ChevronDown,
@@ -469,14 +470,25 @@ export default function HousewarmingPage() {
           className="max-w-4xl mx-auto px-6 mb-20 lg:mb-28"
         >
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="rounded-lg overflow-hidden shadow-md aspect-[3/4] md:aspect-[4/5]">
-              <img
-                src={imgFoundation}
-                alt="Foundation stone laying ceremony"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
+            <div className="grid grid-cols-2 gap-3 lg:gap-4">
+              <div className="rounded-lg overflow-hidden shadow-md aspect-[3/4]">
+                <img
+                  src={imgFoundation}
+                  alt="Foundation stone blessing"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-md aspect-[3/4] mt-8 lg:mt-12">
+                <img
+                  src={imgFoundation2}
+                  alt="Foundation stone laying ceremony"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
             <div className="text-center md:text-left">
               <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-3">
@@ -485,6 +497,10 @@ export default function HousewarmingPage() {
               <h3 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4">
                 The Foundation Stone
               </h3>
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4 flex items-center justify-center md:justify-start gap-2">
+                <Calendar className="w-3.5 h-3.5 text-primary/60" />
+                9 / 10 / 25
+              </p>
               <p className="font-body text-base text-muted-foreground leading-relaxed">
                 Before the walls rose, we laid this stone in prayer — marking the beginning of a home
                 built not only with hands, but with faith. Every blessing spoken that day still lives
