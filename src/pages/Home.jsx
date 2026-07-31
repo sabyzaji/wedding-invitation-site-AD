@@ -259,14 +259,33 @@ export default function HousewarmingPage() {
 
           <CountdownCard />
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="mt-16"
+          <motion.a
+            href="#invitation"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2, duration: 0.8 }}
+            className="mt-14 inline-flex flex-col items-center gap-3 group"
+            aria-label="Scroll to invitation"
           >
-            <ChevronDown className="w-5 h-5 text-white/40 mx-auto animate-bounce" />
-          </motion.div>
+            <span className="font-body text-[10px] tracking-[0.35em] uppercase text-white/90">
+              Scroll to explore
+            </span>
+            <span className="relative flex h-12 w-7 items-start justify-center rounded-full border-2 border-white/70 bg-white/10 backdrop-blur-sm pt-2 shadow-[0_0_20px_rgba(255,255,255,0.25)] group-hover:border-white group-hover:bg-white/20 transition-colors">
+              <motion.span
+                className="block h-2 w-1 rounded-full bg-white"
+                animate={{ y: [0, 14, 0], opacity: [1, 0.35, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </span>
+            <motion.span
+              className="flex flex-col items-center -mt-1"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5 text-white drop-shadow-md -mb-3" />
+              <ChevronDown className="w-5 h-5 text-white/55" />
+            </motion.span>
+          </motion.a>
         </div>
       </section>
 
