@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import imgFamily from "@/assests/family.jpeg";
 import imgHouse from "@/assests/house.jpg";
+import imgVenue from "@/assests/house.jpeg";
+import imgFoundation from "@/assests/foundation.jpeg";
 import {
   Home,
   ChevronDown,
@@ -130,7 +132,7 @@ const events = [
     title: "Housewarming Reception",
     desc: "Join us as we open our doors and hearts — an evening of gratitude, fellowship, and celebration in our new home.",
     time: "5:00 PM onwards",
-    venue: "Chuzhakunnel House, South Pampay, Kottayam",
+    venue: "Chuzhakunnel House, South Pampady, Kottayam",
     venueMapUrl: VENUE_MAP_URL,
     featured: true,
   },
@@ -251,7 +253,7 @@ export default function HousewarmingPage() {
             transition={{ delay: 1.7, duration: 1 }}
             className="mt-3 font-body text-xs tracking-widest uppercase text-white/70"
           >
-            Chuzhakunnel House · South Pampay
+            Chuzhakunnel House · South Pampady
           </motion.p>
 
           <CountdownCard />
@@ -320,20 +322,20 @@ export default function HousewarmingPage() {
               aria-label="Open Chuzhakunnel House in Google Maps"
               className="block h-full w-full"
             >
-              <div
-                className="h-full w-full flex flex-col items-center justify-center gap-4"
-                style={{
-                  background:
-                    "linear-gradient(145deg, hsl(var(--secondary)) 0%, hsl(var(--muted)) 50%, hsl(150 14% 86%) 100%)",
-                }}
-              >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Home className="w-7 h-7 text-primary" />
-                </div>
-                <div className="text-center px-6">
-                  <p className="font-display text-2xl text-foreground">Chuzhakunnel House</p>
-                  <p className="font-body text-sm text-muted-foreground mt-2 flex items-center justify-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-primary/60" />
+              <div className="relative h-full w-full flex flex-col items-center justify-end gap-3 pb-6">
+                <img
+                  src={imgVenue}
+                  alt="Chuzhakunnel House"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-primary/35" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent" />
+                <div className="relative z-10 text-center px-6">
+                  <p className="font-display text-2xl text-white">Chuzhakunnel House</p>
+                  <p className="font-body text-sm text-white/85 mt-2 flex items-center justify-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
                     View on Google Maps
                   </p>
                 </div>
@@ -352,7 +354,7 @@ export default function HousewarmingPage() {
               Chuzhakunnel House
             </h3>
             <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">
-              Nestled in the quiet of South Pampay, our new home awaits your footsteps and your
+              Nestled in the quiet of South Pampady, our new home awaits your footsteps and your
               blessings. Come as you are — we cannot wait to welcome you through our doors.
             </p>
             <div className="space-y-3 font-body text-sm text-muted-foreground">
@@ -361,7 +363,7 @@ export default function HousewarmingPage() {
                 <span>
                   Chuzhakunnel House
                   <br />
-                  South Pampay
+                  South Pampady
                   <br />
                   Kottayam
                 </span>
@@ -459,6 +461,44 @@ export default function HousewarmingPage() {
           />
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-6 mb-20 lg:mb-28"
+        >
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="rounded-lg overflow-hidden shadow-md aspect-[3/4] md:aspect-[4/5]">
+              <img
+                src={imgFoundation}
+                alt="Foundation stone laying ceremony"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-3">
+                Where it began
+              </p>
+              <h3 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4">
+                The Foundation Stone
+              </h3>
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                Before the walls rose, we laid this stone in prayer — marking the beginning of a home
+                built not only with hands, but with faith. Every blessing spoken that day still lives
+                in these rooms.
+              </p>
+              <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
+                <div className="h-px w-8 bg-primary/30" />
+                <Church className="w-3.5 h-3.5 text-primary opacity-70" />
+                <div className="h-px w-8 bg-primary/30" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-8 lg:gap-10">
           {blessings.map((b, i) => (
             <motion.div
@@ -503,7 +543,7 @@ export default function HousewarmingPage() {
           />
           <p className="font-display text-2xl md:text-3xl text-foreground">The Chuzhakunnel Family</p>
           <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mt-2">
-            22 August 2026 · South Pampay, Kottayam
+            22 August 2026 · South Pampady, Kottayam
           </p>
         </motion.div>
       </section>
